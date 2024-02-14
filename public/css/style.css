@@ -1,0 +1,79 @@
+body {
+font-family: 'Helvetica', sans-serif;
+background-color: rgb(23,23,23);
+color: white;
+}
+
+.container {
+padding: 30px;
+text-align: center;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+}
+
+.card-body{
+background-color: rgba(224, 224, 224, 0.352);
+}
+.card{
+box-shadow: 10px 5px 5px rgba(9, 100, 160, 0.526);
+}
+
+.file-upload-content {
+display: none;
+text-align: center;
+}
+
+.file-upload-input {
+position: absolute;
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+outline: none;
+opacity: 0;
+cursor: pointer;
+}
+
+.image-upload-wrap {
+margin-top: 20px;
+color: white;
+background-color: #00000036;
+border: 4px dashed #1FB264;
+position: relative;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+background-color: #0000000b;
+border: 4px dashed #036a33;
+}
+
+.image-title-wrap {
+padding: 0 15px 15px 15px;
+color: #222;
+}
+
+.drag-text {
+text-align: center;
+}
+
+.drag-text h3 {
+font-weight: 100;
+text-transform: uppercase;
+color: #15824B;
+padding: 60px 0;
+}
+
+.file-upload-image {
+max-height: 600px;
+max-width: 600px;
+margin: auto;
+padding: 20px;
+}
+
+#promt{
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+    padding: 18px;
+
+}
