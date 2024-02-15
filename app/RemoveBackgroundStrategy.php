@@ -32,7 +32,7 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
 
         // create new manager instance with desired driver
         $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
-        $manager = new ImageManager(new Driver);
+        $manager = ImageManager::gd();
 
         $img = $manager->read($request->file('image'));
         if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
