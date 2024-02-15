@@ -4,8 +4,10 @@ namespace App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
+
+
 
 class RemoveBackgroundStrategy implements ImageEditingStrategy
 {
