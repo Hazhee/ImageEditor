@@ -4,10 +4,8 @@ namespace App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Imagick\Driver;
-
-
 
 class RemoveBackgroundStrategy implements ImageEditingStrategy
 {
@@ -34,7 +32,7 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
 
         // create new manager instance with desired driver
         $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
-        $manager = new ImageManager(new Driver);
+        $manager = new ImageManager(new Driver());
 
         $img = $manager->read($request->file('image'));
         if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
