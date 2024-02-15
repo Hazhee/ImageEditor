@@ -26,7 +26,6 @@ class TextToImageStrategy implements ImageEditingStrategy
         ->post('https://clipdrop-api.co/text-to-image/v1');
 
         if ($response->successful()) {
-            dd('sarkatwbw');
             // Save the result image to storage or perform further actions
             $buffer = $response->getBody()->getContents(); // Get the binary representation of the returned image
             $editedImagePath = 'edited_image.jpg';
