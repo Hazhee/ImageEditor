@@ -18,13 +18,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::view('https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/background/remove', 'background_remove')->name('background.remove.index');
-Route::view('/cleanup', 'cleanup')->name('clean');
-Route::post('https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/remove/background', [ImageEditorController::class, 'removeBackground'])->name('background.remove');
+Route::view('background/remove', 'background_remove')->name('background.remove.index');
+Route::view('cleanup', 'cleanup')->name('clean');
+Route::post('remove/background', [ImageEditorController::class, 'removeBackground'])->name('background.remove');
 
-Route::post('/cleanup/image', [ImageEditorController::class, 'cleanUp'])->name('cleanup');
-Route::get('https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/edit-image', [ImageEditorController::class, 'removeBackground'])->name('edited.image');
-Route::get('/download/{editedImagePath}', [ImageEditorController::class, 'downloadImage'])->name('download');
+Route::post('cleanup/image', [ImageEditorController::class, 'cleanUp'])->name('cleanup');
+Route::get('edit-image', [ImageEditorController::class, 'removeBackground'])->name('edited.image');
+Route::get('download/{editedImagePath}', [ImageEditorController::class, 'downloadImage'])->name('download');
 
 
 Route::view('image/upscaling', 'image_upscaling')->name('image.upscaling.index');
