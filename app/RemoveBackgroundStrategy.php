@@ -35,12 +35,11 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
 
         $img = $manager->read($request->file('image'));
 
-        
         if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
+            $img->rotate($rotation_angle ?? 0);
             $img->resize($resized_width, $resized_height);
-            $img->rotate($rotation_angle);
         }
-        
+
         $img->toJpeg(80)->save(base_path('public/' . $name_gen));
         $path = public_path($name_gen);
 
