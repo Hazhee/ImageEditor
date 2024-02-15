@@ -20,7 +20,7 @@ class TextToImageStrategy implements ImageEditingStrategy
         ]);
 
         $response = Http::withHeaders([
-            'x-api-key' => $this->apiKey,
+            'x-api-key' => "25989b5160c845447f53a3b997be64b40930b5b4f3d7e1e95516be86ce0fbb12f90896deeb39a9026de5ba79ba969c6b",
         ])
         ->attach('prompt', $request->promt)
         ->post('https://clipdrop-api.co/text-to-image/v1');
