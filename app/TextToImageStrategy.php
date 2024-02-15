@@ -28,7 +28,8 @@ class TextToImageStrategy implements ImageEditingStrategy
         if ($response->successful()) {
             // Save the result image to storage or perform further actions
             // $buffer = $response->getBody()->getContents(); // Get the binary representation of the returned image
-            $editedImagePath = 'result.png';
+ 
+            $editedImagePath = hexdec(uniqid()) . '.png';
 
             file_put_contents($editedImagePath, $response->body());
 
