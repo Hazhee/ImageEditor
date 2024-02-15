@@ -2,7 +2,7 @@
 @section('content')
     <h1 class="mb-4 text-center">Image Editor - Text To Image</h1>
     <h5>Real-Time Text-to-Image Generation</h5>
-    <form action="{{url('https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/text/to/image')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{{ route('text.image') }}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="input-group flex-nowrap" style="width: 70%; margin:80px auto">
             <input id="promt" type="text" name="promt" class="form-control" placeholder="Type the prompt here" aria-label="Promot"

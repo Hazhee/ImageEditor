@@ -20,17 +20,23 @@ class TextToImageStrategy implements ImageEditingStrategy
         ]);
 
         $response = Http::withHeaders([
-            'x-api-key' => "2ad23420d674720eebb2486c4dc03b2cc00e76c57e18cd2473c848af46f9362098e073cffb889037204d3fba475e00b9",
+            'x-api-key' => "bd36c7793fb5e3228ae6a669ce99d7142e18fdec3de67f9ff53130eb9e47742829bf39494933da7bd1af215265cf18e0",
         ])
         ->attach('prompt', $request->promt)
         ->post('https://clipdrop-api.co/text-to-image/v1');
 
         if ($response->successful()) {
             // Save the result image to storage or perform further actions
-            $buffer = $response->getBody()->getContents(); // Get the binary representation of the returned image
-            $editedImagePath = 'edited_image.jpg';
-            Storage::disk('local')->put("{$editedImagePath}", $buffer); //save the image to a new location
-            // You may also return a response to the user or redirect as needed
+            // $buffer = $response->getBody()->getContents(); // Get the binary representation of the returned image
+            $editedImagePath = 'result.png';
+
+            file_put_contents($editedImagePath, $response->body());
+
+            // $editedImagePath = 'edited_image.jpg';
+            // Storage::disk('local')->move($buffer, 'public/' . $editedImagePath);
+            // $editedImagePath = 'edited_image.jpg';
+            // Storage::disk('local')->put("{$editedImagePath}", $buffer); //save the image to a new location
+            // // You may also return a response to the user or redirect as needed
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
             // Handle the case when the API request is not successful
