@@ -38,7 +38,7 @@ class ImageCropStrategy implements ImageEditingStrategy
             $img->rotate(-$rotation_angle);
         }
         $img->crop($resized_width, $resized_height, $x_possition, $y_possition);
-        $img->toJpeg(80)->save(base_path('public/storage/public/' . $name_gen));
+        $img->toJpeg(80)->save(base_path('public/' . $name_gen));
         return view('edited_image')->with('editedImagePath', $name_gen);
     }
 }

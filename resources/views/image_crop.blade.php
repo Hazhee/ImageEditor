@@ -3,7 +3,7 @@
 
     <h1 class="mb-4 text-center">Image Editor - Crop Image</h1>
     <h5>Crop IMAGE. Crop JPG, PNG or GIF by defining a rectangle in pixels. Cut your image online. Upload your file and transform it. Select images.</h5>
-    <form action="{{ route('crop.image') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('https://elijahimageeditor-bf08cb0934b4.herokuapp.com/crop/image') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload text-center">
             <div class="image-upload-wrap">
