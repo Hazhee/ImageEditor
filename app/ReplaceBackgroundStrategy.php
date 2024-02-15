@@ -22,7 +22,6 @@ class ReplaceBackgroundStrategy implements ImageEditingStrategy
 
         // Get the image and mask files from the form
         $image = $request->file('image');
-        $request->file('image')->store();
 
         $response = Http::withHeaders([
             'x-api-key' => $this->apiKey,
@@ -33,7 +32,6 @@ class ReplaceBackgroundStrategy implements ImageEditingStrategy
 
         if ($response->successful()) {
             // Save the result image to storage or perform further actions
-
             $editedImagePath = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
             file_put_contents($editedImagePath, $response->body());
             // You may also return a response to the user or redirect as needed
