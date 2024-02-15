@@ -26,38 +26,35 @@ class ImageUpscalingStrategy implements ImageEditingStrategy
 
         $rotation_angle = $request->angle;
 
-       // create new manager instance with desired driver
-       $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
-       $manager = new ImageManager(new Driver);
-       $img = $manager->read($request->file('image'));
-       if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
-           $img->resize($resized_width, $resized_height);
-           $img->rotate($rotation_angle);
-       }
-       $img->toJpeg(80)->save(base_path('public/storage/public/' . $name_gen));
+        // create new manager instance with desired driver
+        $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+        $manager = new ImageManager(new Driver());
+        $img = $manager->read($request->file('image'));
 
-       $path = public_path('storage/public/' . $name_gen);
+        if (($resized_width > 0 && $resized_height > 0) || $rotation_angle != null) {
+            $img->rotate($rotation_angle ?? 0);
+            $img->resize($resized_width, $resized_height);
+        }
+
+        $img->toJpeg(80)->save(base_path('public/' . $name_gen));
+        $path = public_path($name_gen);
         // taking the image width
         $width = $img->width();
         // taking the image height
         $height = $img->height();
-        //store the image in the local storage
-        $request->file('image')->store();
+
         $response = Http::withHeaders([
             'x-api-key' => $this->apiKey,
         ])
-        ->attach('image_file', fopen($path, 'r'), 'image.jpg')
-        ->attach('target_width', $width + 1000)
-        ->attach('target_height', $height + 1000)
-        ->post('https://clipdrop-api.co/image-upscaling/v1/upscale');
+            ->attach('image_file', fopen($path, 'r'), 'image.jpg')
+            ->attach('target_width', $width + 1000)
+            ->attach('target_height', $height + 1000)
+            ->post('https://clipdrop-api.co/image-upscaling/v1/upscale');
 
         // Check if the request was successful (HTTP status 200)
         if ($response->successful()) {
-            // Save the result image to storage or perform further actions
-            $buffer = $response->getBody()->getContents(); // Get the binary representation of the returned image
-            $editedImagePath = 'edited_image.jpg';
-            Storage::disk('local')->put("{$editedImagePath}", $buffer); //save the image to a new location
-            // You may also return a response to the user or redirect as needed
+            $editedImagePath = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+            file_put_contents($editedImagePath, $response->body());
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
             // Handle the case when the API request is not successful
