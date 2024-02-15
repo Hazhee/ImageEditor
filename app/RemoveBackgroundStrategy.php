@@ -29,6 +29,8 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
 
         $rotation_angle = $request->angle;
 
+        $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+
         $manager = new ImageManager(new Driver());
 
         $img = $manager->read($request->file('image'));
@@ -36,12 +38,14 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
         
         $img->resize($resized_width, $resized_height);
         $img->rotate($rotation_angle);
+        $img->toJpeg(80)->save(base_path('public/' . $name_gen));
+        $path = public_path($name_gen);
         
 
         $response = Http::withHeaders([
             'x-api-key' => $this->apiKey,
         ])
-            ->attach('image_file', file_get_contents($img->origin()->filePath()), 'image.jpg')
+            ->attach('image_file', fopen($path, 'r'), 'image.jpg')
             ->post('https://clipdrop-api.co/remove-background/v1');
 
         // Check if the response is successful
