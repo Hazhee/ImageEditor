@@ -1,10 +1,11 @@
 <?php
 namespace App;
 
+require './vendor/autoload.php';
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Drivers\Imagick\Driver;
 use Intervention\Image\ImageManager;
 
 class RemoveBackgroundStrategy implements ImageEditingStrategy
