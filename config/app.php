@@ -187,7 +187,7 @@ return [
     ])->toArray(),
 
 
-    'api_key' => env('API_KEY'),
+    // 'api_key' => env('API_KEY'),
 
 
 ];

@@ -31,8 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'clipdrop' => [
-        'api_key' => env('API_KEY'),
-    ],
+    // 'clipdrop' => [
+    //     'api_key' => env('API_KEY'),
+    // ],
 
 ];
