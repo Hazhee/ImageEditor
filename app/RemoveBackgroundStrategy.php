@@ -22,7 +22,6 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,web|max:2048',
         ]);
-        
 
         $resized_width = $request->resizedWidth;
 
@@ -30,31 +29,25 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
 
         $rotation_angle = $request->angle;
 
-        // create new manager instance with desired driver
-        $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
         $manager = new ImageManager(new Driver());
 
         $img = $manager->read($request->file('image'));
+
         if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
             $img->resize($resized_width, $resized_height);
             $img->rotate($rotation_angle);
         }
-        $img->toJpeg(80)->save(base_path('public/storage/public/' . $name_gen));
 
-        $path = public_path('storage/public/' . $name_gen);
-
-        
         $response = Http::withHeaders([
             'x-api-key' => $this->apiKey,
         ])
-            ->attach('image_file', fopen($path, 'r'), 'image.jpg')
+            ->attach('image_file', file_get_contents($img->origin()->filePath()), 'image.jpg')
             ->post('https://clipdrop-api.co/remove-background/v1');
 
         // Check if the response is successful
         if ($response->getStatusCode() === 200) {
-            $buffer = $response->getBody()->getContents(); // Get the binary representation of the returned image
-            $editedImagePath = 'edited_image.jpg';
-            Storage::disk('local')->put("{$editedImagePath}", $buffer); //save the image to a new location
+            $editedImagePath = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+            file_put_contents($editedImagePath, $response->body());
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
             // Handle non-OK response
