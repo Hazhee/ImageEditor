@@ -33,9 +33,9 @@ class ReplaceBackgroundStrategy implements ImageEditingStrategy
 
         if ($response->successful()) {
             // Save the result image to storage or perform further actions
-            $buffer = $response->getBody()->getContents(); // Get the binary representation of the returned image
-            $editedImagePath = 'edited_image.jpg';
-            Storage::disk('local')->put("{$editedImagePath}", $buffer); //save the image to a new location
+
+            $editedImagePath = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+            file_put_contents($editedImagePath, $response->body());
             // You may also return a response to the user or redirect as needed
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
