@@ -62,7 +62,7 @@ class ImageEditorController extends Controller
 
     public function downloadImage($editedImagePath)
     {
-        $path = public_path('storage/public/' . $editedImagePath);
+        $path = public_path($editedImagePath);
         return response()->download($path);
     }
 }
