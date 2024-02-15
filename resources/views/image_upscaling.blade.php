@@ -2,7 +2,7 @@
 @section('content')
     <h1 class="mb-4 text-center">Image Editor - Image Upscaling</h1>
     <h5>Upscale, denoise and enhance your images in seconds</h5>
-    <form action="{{ route('image.upscaling') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('https://elijahimageeditor-bf08cb0934b4.herokuapp.com/image/upscaling') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload text-center">
             <div class="image-upload-wrap">
@@ -53,7 +53,7 @@
             @error('image')
                 <span class="text-danger mt-3">{{ $message }}</span> <br>
             @enderror
-            <button type="submit" class="btn btn-lg btn-success mt-3 mb-3" onclick="submitForm()">Upscale Image</button>
+            <button type="submit" class="btn btn-success mt-3 mb-3" onclick="submitForm()">Upscale Image</button>
         </div>
 
         <!-- Loading Indicator -->

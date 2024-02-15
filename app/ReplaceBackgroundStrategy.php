@@ -20,7 +20,7 @@ class ReplaceBackgroundStrategy implements ImageEditingStrategy
             'image' => 'required|image|mimes:png,jpg,web|max:2048',
         ]);
 
-        // Get the image and mask files from the form
+        // Get the image file from the form
         $image = $request->file('image');
 
         $response = Http::withHeaders([
@@ -31,10 +31,8 @@ class ReplaceBackgroundStrategy implements ImageEditingStrategy
         ->post('https://clipdrop-api.co/replace-background/v1');
 
         if ($response->successful()) {
-            // Save the result image to storage or perform further actions
-            $editedImagePath = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
+            $editedImagePath = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension(); //unique name
             file_put_contents($editedImagePath, $response->body());
-            // You may also return a response to the user or redirect as needed
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
             // Handle the case when the API request is not successful

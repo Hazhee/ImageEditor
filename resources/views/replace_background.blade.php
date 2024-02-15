@@ -29,7 +29,7 @@
             @error('image')
                 <span class="text-danger mt-3">{{ $message }}</span> <br>
             @enderror
-            <button type="submit" class="btn btn-lg btn-success mt-3 mb-3" onclick="submitForm()">Replace Background</button>
+            <button type="submit" class="btn btn-success mt-3 mb-3" onclick="submitForm()">Replace Background</button>
         </div>
 
         <!-- Loading Indicator -->
