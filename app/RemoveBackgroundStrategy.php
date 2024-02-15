@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
 
 class RemoveBackgroundStrategy implements ImageEditingStrategy
@@ -32,9 +32,10 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
 
         // create new manager instance with desired driver
         $name_gen = hexdec(uniqid()) . '.' . $request->file('image')->getClientOriginalExtension();
-        $manager = new ImageManager(new Driver());
+        // $manager = new ImageManager(new Driver());
+        $img = Image::make($request->file('image'));
 
-        $img = $manager->read($request->file('image'));
+        // $img = $manager->read($request->file('image'));
         if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
             $img->resize($resized_width, $resized_height);
             $img->rotate($rotation_angle);
