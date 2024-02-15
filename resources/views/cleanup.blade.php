@@ -2,7 +2,7 @@
 @section('content')
     <h1 class="mb-4">Image Editor - Cleanup</h1>
     <h5>Remove object, defect, people, or text from your pictures in seconds</h5>
-    <form action="{{ uel('https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/cleanup/image')}}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/cleanup/image')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload">
             <div class="image-upload-wrap">
