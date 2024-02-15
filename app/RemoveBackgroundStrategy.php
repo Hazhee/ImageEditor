@@ -33,10 +33,10 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
 
         $img = $manager->read($request->file('image'));
 
-        if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
-            $img->resize($resized_width, $resized_height);
-            $img->rotate($rotation_angle);
-        }
+        
+        $img->resize($resized_width, $resized_height);
+        $img->rotate($rotation_angle);
+        
 
         $response = Http::withHeaders([
             'x-api-key' => $this->apiKey,
