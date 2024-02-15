@@ -13,7 +13,7 @@
 
 
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"> --}}
-    <link rel="stylesheet" href="https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/assets/css/style.css">
+    <link rel="stylesheet" href="https://elijahimageeditor-bf08cb0934b4.herokuapp.com/assets/css/style.css">
 
 </head>
 
@@ -25,7 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 
     {{-- <script src="{{ asset('assets/js/script.js') }}"></script> --}}
-    <script src="https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/assets/js/script.js"></script>
+    <script src="https://elijahimageeditor-bf08cb0934b4.herokuapp.com/assets/js/script.js"></script>
 </body>
 
 </html>

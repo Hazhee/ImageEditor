@@ -2,7 +2,7 @@
 @section('content')
     <h1 class="mb-4 text-center">Image Editor - Replace Background</h1>
     <h5>The input image should be a PNG, a JPG or a WEBP file, with a maximum width and height of 2048 pixels and a max file size of 20 Mb.</h5>
-    <form action="{{ url('https://elijahimageeditor-b7a88b3db0fa.herokuapp.com/replace/image/background') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('https://elijahimageeditor-bf08cb0934b4.herokuapp.com/replace/image/background') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload text-center">
             <div class="image-upload-wrap">
