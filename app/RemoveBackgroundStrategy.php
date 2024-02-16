@@ -15,7 +15,7 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
     // Constructor to initialize API key
     public function __construct()
     {
-        $this->apiKey = config('clipdrop.api_key');
+        $this->apiKey = env('CLIPDROP_API_KEY');
     }
 
     // Method to process background removal based on the given request
