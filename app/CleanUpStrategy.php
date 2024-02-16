@@ -15,7 +15,6 @@ class CleanUpStrategy implements ImageEditingStrategy
         // Fetch the API key from the environment variables
         $this->apiKey = env('CLIPDROP_API_KEY');
     }
-
     // Image cleanup process using the ClipDrop API
     public function process(Request $request)
     {
