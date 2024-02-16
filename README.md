@@ -1,66 +1,186 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Image Editor
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The Image Editor is a web-based application that allows users to perform various image editing tasks, such as removing the background, cleaning up images, cropping, replacing backgrounds, upscaling, and generating images from text prompts. The application leverages the ClipDrop API for these editing functionalities.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+  - [Remove Background](#remove-background)
+  - [Cleanup](#cleanup)
+  - [Image Upscaling](#image-upscaling)
+  - [Text to Image](#text-to-image)
+  - [Crop Image](#crop-image)
+  - [Replace Background](#replace-background)
+- [Deployed Application](#deployed-application)
+- [Contributing](#contributing)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+- **Remove Background:** Remove the background from an image.
+- **Cleanup:** Clean up images using advanced image processing techniques.
+- **Image Upscaling:** Increase the resolution of an image.
+- **Text to Image:** Generate an image from a text prompt.
+- **Crop Image:** Crop an image with specified dimensions and positions.
+- **Replace Background:** Replace the background of an image.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Getting Started
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Before running the Image Editor, ensure you have the following installed:
 
-## Laravel Sponsors
+- PHP
+- Composer
+- ClipDrop API Key
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Installation
 
-### Premium Partners
+1. Clone the repository:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    ```bash
+    git clone https://github.com/Hazhee/ImageEditor.git
+    ```
+
+2. Change into the project directory:
+
+    ```bash
+    cd ImageEditor
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    composer install
+    ```
+
+4. Set up your environment variables by creating a copy of the `.env.example` file:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+5. Update the `.env` file with your ClipDrop API key:
+
+    ```env
+    CLIPDROP_API_KEY=your-api-key
+    ```
+    You can claim 100 points along with an api key from Clipdrop by making an account (https://clipdrop.co)
+
+6. Generate an application key:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+7. Run the application:
+
+    ```bash
+    php artisan serve
+    ```
+
+   The application will be accessible at [http://localhost:8000](http://localhost:8000).
+
+## Usage
+
+### Remove Background
+
+To remove the background from an image:
+
+1. Visit [http://localhost:8000/background/remove](http://localhost:8000/background/remove).
+2. Upload an image.
+3. The original image to process. It should be a PNG, a JPG or a WEBP file, with a maximum resolution of 25 megapixels and a max file size of 30 Mb.
+5. Optionally, specify width, height, and rotation angle.
+6. Click "Remove Background."
+
+### Cleanup
+
+To clean up an image:
+
+1. Visit [http://localhost:8000/cleanup](http://localhost:8000/cleanup).
+2. Upload an image and a mask.
+3. The original image should be a JPG or a PNG, with a maximum resolution of 16 megapixels and a max file size of 30 Mb.
+4. The mask image should be a PNG, and should have the same resolution as the original image and a max file size of 30 Mb. The mask should be black and white with no grey pixels (e.g. values of only 0 or 255), the value of 0 indicating a pixel to keep as is and 255 a pixel to 'clean up'
+5. Click "Cleanup."
+
+#### Examples of input and outputs. you may use the following image along with its mask to test.
+#### image_file
+
+![Example Image](https://static.clipdrop.co/web/apis/cleanup/photo.jpg)
+
+#### mask_file
+
+![Example Image](https://static.clipdrop.co/web/apis/cleanup/mask.png)
+
+### Image Upscaling
+
+To upscale an image:
+
+1. Visit [http://localhost:8000/image/upscaling](http://localhost:8000/image/upscaling).
+2. Upload an image.
+3. The original image should be a PNG, JPEG or WebP file, with a maximum resolution of 16 megapixels and a max file size of 30 Mb.
+4. Optionally, specify width, height, and rotation angle.
+5. Click "Upscale Image."
+
+### Text to Image
+
+To generate an image from text:
+
+1. Visit [http://localhost:8000/text/to/image](http://localhost:8000/text/to/image).
+2. Enter a prompt.
+3. A required prompt text field describing the desired image, with a max length of a 1000 characters.
+4. Click "Generate Image."
+
+### Crop Image
+
+To crop an image:
+
+1. Visit [http://localhost:8000/crop/image](http://localhost:8000/crop/image).
+2. Upload an image.
+3. Specify width, height, x-position, y-position, and rotation angle.
+4. Click "Crop Image."
+
+### Replace Background
+
+To replace the background of an image:
+
+1. Visit [http://localhost:8000/replace/image/background](http://localhost:8000/replace/image/background).
+2. Upload an image.
+3. The input image should be a PNG, a JPG or a WEBP file, with a maximum width and height of 2048 pixels and a max file size of 20 Mb.
+4. A required prompt text field describing the scene you want to teleport your item to. The value of this field can be an empty string, in which case we will generate a scene based on your item.
+5. Optionally, specify width, height, and rotation angle.
+6. Click "Replace Background."
+
+
+## Deployed Application and Process
+
+### Set Up Hosting Environment
+
+### Heroku:
+1. Create a Heroku account and install the Heroku CLI.
+2. Initialize a Git repository if not done already: `git init`.
+3. Create a Procfile in your project root with the command to start your app: `web: vendor/bin/heroku-php-apache2 public/`.
+4. Commit the changes and push to Heroku:
+   ```bash
+   git add .
+   git commit -m "Initial commit for Heroku"
+   heroku create
+   git push heroku main
+
+### Configure Environment Variables
+In your Heroku dashboard, under the "Settings" tab, add your environment variables (e.g., APP_KEY, API keys).
+
+### The deployed link
+The deployed version of the application can be accessed at (https://elijahimageeditor-9687250f9a6e.herokuapp.com).
+
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+If you'd like to contribute, feel free to fork the repository, make changes, and create a pull request. For bug reports or feature requests, please open an issue.
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Enjoy using the Image Editor!
