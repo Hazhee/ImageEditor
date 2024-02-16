@@ -3,7 +3,7 @@
     <h2 class="mb-4 text-center">Image Editor - Image Upscaling</h2>
     <h6>Upscale, denoise and enhance your images in seconds</h6>
     <span class="text-danger">The original image should be a PNG, JPEG or WebP file, with a maximum resolution of 16 megapixels and a max file size of 30 Mb.</span>
-    <form action="{{ url('https://elijahimageeditor-bf08cb0934b4.herokuapp.com/image/upscaling') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('https://elijahimageeditor-9687250f9a6e.herokuapp.com/image/upscaling') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload text-center">
             <div class="image-upload-wrap">
