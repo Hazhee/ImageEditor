@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="m-3">
-                    <label for="basic-url" class="form-label m-4" style="font-size: 20px">The mask image, defining the areas
+                    <label for="basic-url" class="form-label m-4" style="font-size: 15px">The mask image, defining the areas
                         that need to be removed. <br> The mask should be black and white with no grey pixels (e.g. values of
                         only 0 or 255), the value of 0 indicating a pixel to keep as is and 255 a pixel to 'clean up'
                     </label>

@@ -20,7 +20,7 @@ class CleanUpStrategy implements ImageEditingStrategy
     {
         // Validate the incoming form data
         $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:25000',
+            'image' => 'required|image|mimes:png,jpg,jpeg|dimensions:max_width=4928,max_height=3264|max:25000',
             'mask' => 'required|image|mimes:png|max:25000',
         ]);
 

@@ -20,7 +20,7 @@
                         Image</span></button>
                 </div>
                 <div class="m-3">
-                    <label for="basic-url" class="form-label m-4" style="font-size: 20px">Would you like to resize the image
+                    <label for="basic-url" class="form-label m-4" style="font-size: 15px">Would you like to resize the image
                         before upscaling? <br> Please write the desired width and height to be resized bellow.
                         (optional) </label>
                     <div class="input-group" style="width: 40%; margin: auto">
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="m-3">
-                    <label for="basic-url" class="form-label m-4" style="font-size: 20px">Would you like to rotate the image
+                    <label for="basic-url" class="form-label m-4" style="font-size: 15px">Would you like to rotate the image
                         before removing the background? <br> Please write the desired rotation angle bellow. (optional)
                     </label>
                     <p class="text-danger">Remember possative numbers mean rotate to left and vice versa.</p>

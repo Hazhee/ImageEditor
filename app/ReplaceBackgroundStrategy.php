@@ -17,7 +17,7 @@ class ReplaceBackgroundStrategy implements ImageEditingStrategy
     public function process(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:25000',
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|dimensions:max_width=2048,max_height=2048|max:25000',
         ]);
 
         // Get the image file from the form

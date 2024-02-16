@@ -23,7 +23,7 @@ class ImageUpscalingStrategy implements ImageEditingStrategy
     {
         // Validate the incoming request
         $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:25000',
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|dimensions:max_width=4928,max_height=3264|max:25000',
         ]);
 
         // Extract parameters from the request

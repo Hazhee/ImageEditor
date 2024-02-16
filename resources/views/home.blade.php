@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h1 class="mb-4">Image Editor Tools</h1>
-    <h5 class="mb-4">Select from the captivating options below!</h5>
+    <h6 class="mb-4">Select from the captivating options below!</h6>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
             <div class="card">

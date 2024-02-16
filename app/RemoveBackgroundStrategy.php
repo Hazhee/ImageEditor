@@ -23,7 +23,7 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
     {
         // Validate the incoming request
         $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:25000',
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|dimensions:max_width=6048,max_height=4024|max:25000',
         ]);
 
         // Extract parameters from the request

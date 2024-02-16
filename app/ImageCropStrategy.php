@@ -23,7 +23,7 @@ class ImageCropStrategy implements ImageEditingStrategy
     {
         // Validate the incoming request
         $request->validate([
-            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:25000',
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|dimensions:max_width=2048,max_height=2048|max:25000',
         ]);
 
         // Extract dimensions and position data from the request
