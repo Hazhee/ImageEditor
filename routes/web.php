@@ -8,6 +8,9 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/slaw', function () {
+    return phpinfo();
+});
 // Routes related to removing background
 Route::view('background/remove', 'background_remove')->name('background.remove.index');
 Route::post('remove/background', [ImageEditorController::class, 'removeBackground'])->name('background.remove');
