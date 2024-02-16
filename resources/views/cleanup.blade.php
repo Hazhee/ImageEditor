@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="mb-4">Image Editor - Cleanup</h1>
-    <h5>Remove object, defect, people, or text from your pictures in seconds</h5>
+    <h2 class="mb-4">Image Editor - Cleanup</h2>
+    <h6>Remove object, defect, people, or text from your pictures in seconds</h6>
+    <span class="text-danger">*The original image should be a JPG or a PNG, with a maximum resolution of 16 megapixels and a max file size of 30 Mb.</span>
+    <span class="text-danger">*The mask image should be a PNG, and should have the same resolution as the original image and a max file size of 30 Mb.</span>
     <form action="{{ url('https://elijahimageeditor-bf08cb0934b4.herokuapp.com/cleanup/image')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload">

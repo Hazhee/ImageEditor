@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="mb-4 text-center">Image Editor - Text To Image</h1>
-    <h5>Real-Time Text-to-Image Generation</h5>
+    <h2 class="mb-4 text-center">Image Editor - Text To Image</h2>
+    <h6>Real-Time Text-to-Image Generation</h6>
     <form action="{{url('https://elijahimageeditor-bf08cb0934b4.herokuapp.com/text/to/image')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="input-group flex-nowrap" style="width: 70%; margin:80px auto">

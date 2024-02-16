@@ -21,8 +21,8 @@ class CleanUpStrategy implements ImageEditingStrategy
     {
         // Validate the incoming form data
         $request->validate([
-            'image' => 'required|image',
-            'mask' => 'required|image',
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:25000',
+            'mask' => 'required|image|mimes:png|max:25000',
         ]);
 
         // Get the image and mask files from the form
