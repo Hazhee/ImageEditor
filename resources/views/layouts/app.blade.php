@@ -14,7 +14,7 @@
     <!-- Cropper.js CSS link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
     <!-- Custom stylesheet link -->
-    <link rel="stylesheet" href="https://elijahimageeditor-9687250f9a6e.herokuapp.com/assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 </head>
 
 <body>
@@ -73,7 +73,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 
     <!-- Custom script link for additional functionality -->
-    <script src="https://elijahimageeditor-9687250f9a6e.herokuapp.com/assets/js/script.js"></script>
+    <script src="{{asset('assets/js/script.js')}}"></script>
 </body>
 
 </html>

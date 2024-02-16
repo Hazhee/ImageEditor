@@ -3,7 +3,7 @@
     <h2 class="mb-4 text-center">Image Editor - Replace Background</h2>
     <h6>Upscale your images by 2x or 4x in seconds. It can also remove noise and recover beautiful details.</h6>
     <span class="text-danger">*The input image should be a PNG, a JPG or a WEBP file, with a maximum width and height of 2048 pixels and a max file size of 20 Mb.</span>
-    <form action="{{ url('https://elijahimageeditor-9687250f9a6e.herokuapp.com/replace/image/background') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('replace/image/background') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload text-center">
             <div class="image-upload-wrap">
@@ -28,8 +28,14 @@
             </div>
 
             @error('image')
-                <span class="text-danger mt-3">{{ $message }}</span> <br>
+                <div class="alert alert-danger text-danger mt-3">{{ $message }}</div> <br>
             @enderror
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <button type="submit" class="btn btn-success mt-3 mb-3" onclick="submitForm()">Replace Background</button>
         </div>
 

@@ -62,8 +62,7 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
             file_put_contents($editedImagePath, $response->body());
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
-            // Handle non-OK response
-            throw new \Exception('Error: ' . $response->getStatusCode());
+            return back()->with(['error' => $response->json()['error']]);
         }
     }
 }

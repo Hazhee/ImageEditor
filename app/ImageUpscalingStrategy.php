@@ -69,7 +69,7 @@ class ImageUpscalingStrategy implements ImageEditingStrategy
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
             // Handle the case when the API request is not successful
-            return response()->json(['error' => 'Cleanup failed'], $response->status());
+            return back()->with(['error' => $response->json()['error']]);
         }
     }
 }

@@ -40,7 +40,7 @@ class TextToImageStrategy implements ImageEditingStrategy
             return view('edited_image')->with('editedImagePath', $editedImagePath);
         } else {
             // Handle the case when the API request is not successful
-            return back()->with(['error' => 'failed'], $response->status());
+            return back()->with(['error' => $response->json()['error']]);
         }
     }
 }

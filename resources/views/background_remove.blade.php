@@ -2,12 +2,13 @@
 
 @section('content')
     <!-- Page title and description -->
+    
     <h2 class="mb-4 text-center">Image Editor - Remove Background</h2>
     <h6>Extract the main subject from a picture with incredible accuracy. It's like magic.</h6>
     <span class="text-danger">*The original image should be a PNG, a JPG or a WEBP file, with a maximum resolution of 25 megapixels and a max file size of 30 Mb</span>
 
     <!-- Image removal form -->
-    <form action="{{ url('https://elijahimageeditor-9687250f9a6e.herokuapp.com/remove/background') }}" method="post"
+    <form action="{{ url('remove/background') }}" method="post"
         enctype="multipart/form-data">
         @csrf
         <div class="file-upload text-center">
@@ -67,9 +68,14 @@
 
             <!-- Display error message if image validation fails -->
             @error('image')
-                <span class="text-danger mt-3">{{ $message }}</span> <br>
+                <div class="alert alert-danger text-danger mt-3">{{ $message }}</div> <br>
             @enderror
 
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <!-- Submit button -->
             <button type="submit" class="btn btn-success mt-3 mb-3" onclick="submitForm()">Remove Background</button>
         </div>

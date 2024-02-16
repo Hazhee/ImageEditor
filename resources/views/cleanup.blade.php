@@ -4,7 +4,7 @@
     <h6>Remove object, defect, people, or text from your pictures in seconds</h6>
     <span class="text-danger">*The original image should be a JPG or a PNG, with a maximum resolution of 16 megapixels and a max file size of 30 Mb.</span>
     <span class="text-danger">*The mask image should be a PNG, and should have the same resolution as the original image and a max file size of 30 Mb.</span>
-    <form action="{{ url('https://elijahimageeditor-9687250f9a6e.herokuapp.com/cleanup/image')}}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('cleanup/image')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="file-upload">
             <div class="image-upload-wrap">
@@ -34,8 +34,14 @@
                 </div>
             </div>
             @error('image')
-                <span class="text-danger mt-3">{{ $message }}</span> <br>
+                <div class="alert alert-danger text-danger mt-3">{{ $message }}</div> <br>
             @enderror
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <button type="submit" class="btn btn-success mt-3 mb-3" onclick="submitForm()">Clean Up</button>
         </div>
 
