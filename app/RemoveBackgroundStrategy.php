@@ -15,7 +15,7 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
     // Constructor to initialize API key
     public function __construct()
     {
-        $this->apiKey = env('CLIPDROP_API_KEY');
+        $this->apiKey = config('clipdrop.api_key');
     }
 
     // Method to process background removal based on the given request
@@ -39,7 +39,7 @@ class RemoveBackgroundStrategy implements ImageEditingStrategy
         $img = $manager->read($request->file('image'));
 
         // Apply rotation and resizing if specified
-        if (($resized_width > 0 && $resized_height > 0) || $rotation_angle != null) {
+        if ($resized_width > 0 && $resized_height > 0 || $rotation_angle != NULL) {
             $img->rotate($rotation_angle ?? 0);
             $img->resize($resized_width, $resized_height);
         }

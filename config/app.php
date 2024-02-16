@@ -186,8 +186,9 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
-
-    // 'api_key' => env('API_KEY'),
+    'clipdrop' => [
+        'api_key' => env('CLIPDROP_API_KEY'),
+    ],
 
 
 ];
